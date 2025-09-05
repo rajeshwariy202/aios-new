@@ -12,6 +12,9 @@ import RegistrationSuccessPage from './RegistrationSuccessPage';
 import SocialProfilePage from './SocialProfilePage';
 import ProfilePage from './ProfilePage';
 import BuddyPage from './BuddyPage';
+import NotificationPage from './NotificationPage';
+import ChatPage from './ChatPage';
+import ReminderPage from './ReminderPage';
 
 export default function Index() {
   const [currentPage, setCurrentPage] = useState('splash');
@@ -100,6 +103,33 @@ export default function Index() {
       <BuddyPage 
         onNavigateToHome={() => setCurrentPage('home')}
         onNavigateToProfile={() => setCurrentPage('profile')}
+        onNavigateToNotifications={() => setCurrentPage('notifications')}
+        onNavigateToChat={() => setCurrentPage('chat')}
+        onNavigateToReminders={() => setCurrentPage('reminders')}
+      />
+    );
+  }
+
+  if (currentPage === 'notifications') {
+    return (
+      <NotificationPage 
+        onNavigateBack={() => setCurrentPage('buddies')}
+      />
+    );
+  }
+
+  if (currentPage === 'chat') {
+    return (
+      <ChatPage 
+        onNavigateBack={() => setCurrentPage('buddies')}
+      />
+    );
+  }
+
+  if (currentPage === 'reminders') {
+    return (
+      <ReminderPage 
+        onNavigateBack={() => setCurrentPage('buddies')}
       />
     );
   }

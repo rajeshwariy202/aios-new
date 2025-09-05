@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, TextInput } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface BuddyPageProps {
   onNavigateToHome?: () => void;
@@ -80,7 +80,13 @@ const BuddyPage = ({ onNavigateToHome, onNavigateToProfile, onNavigateToNotifica
           <TouchableOpacity onPress={() => setShowSearch(!showSearch)} style={styles.headerIcon}>
             <Ionicons name="search" size={28} color="white" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setShowNotifications(!showNotifications)} style={styles.headerIcon}>
+          <TouchableOpacity style={styles.headerIcon}>
+            <Ionicons name="alarm-outline" size={28} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setShowChat(!showChat)} style={styles.headerIcon}>
+            <Ionicons name="chatbubble-outline" size={28} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onNavigateToNotifications} style={styles.headerIcon}>
             <Ionicons name="notifications-outline" size={28} color="white" />
           </TouchableOpacity>
         </View>
@@ -104,23 +110,7 @@ const BuddyPage = ({ onNavigateToHome, onNavigateToProfile, onNavigateToNotifica
 
 
 
-      {/* Notifications Dropdown */}
-      {showNotifications && (
-        <View style={styles.notificationContainer}>
-          <TouchableOpacity style={styles.notificationItem}>
-            <Ionicons name="person-add" size={20} color="#4CAF50" />
-            <Text style={styles.notificationText}>New buddy request from John</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.notificationItem}>
-            <Ionicons name="chatbubble" size={20} color="#2196F3" />
-            <Text style={styles.notificationText}>Message from Sarah Johnson</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.notificationItem}>
-            <Ionicons name="car" size={20} color="#FF9800" />
-            <Text style={styles.notificationText}>Trip reminder: Mumbai to Delhi</Text>
-          </TouchableOpacity>
-        </View>
-      )}
+ 
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Buddy List */}
